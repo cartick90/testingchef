@@ -1,0 +1,16 @@
+execute 'version' do
+  command 'wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -'
+end
+
+execute 'list' do
+  command 'echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list'
+end
+
+execute 'install' do
+  command 'sudo apt-get update'
+end
+
+execute 'install_jenkins' do
+  command 'sudo apt-get install jenkins -y'
+end
+
